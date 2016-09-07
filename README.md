@@ -19,10 +19,10 @@ After this you will be able to find the public url for your localhost which shou
 
 For create subscription:
 
-http://22366390.ngrok.io/AppDirect/subscribe/create?url={eventUrl}
+https://2fb6a249.ngrok.io/AppDirect/subscribe/create?url={eventUrl}
 
 For cancel subscription:
 
-http://22366390.ngrok.io/AppDirect/subscribe/cancel?url={eventUrl}
+https://2fb6a249.ngrok.io/AppDirect/subscribe/cancel?url={eventUrl}
 
 
