@@ -10,7 +10,6 @@ import javax.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +29,12 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.appdirect.commons.CommonConstants;
 import com.appdirect.filters.SecurityFilter;
 import com.appdirect.logger.Logger;
+import com.appdirect.services.DBServiceContainer;
+import com.appdirect.services.HashMapDBServiceImpl;
+import com.appdirect.services.MySQLDBServiceImpl;
 
 /**
  * @author SumeetS
@@ -119,6 +122,14 @@ public class WebConfig extends WebMvcAutoConfigurationAdapter {
 	ResourceBundleMessageSource source = new ResourceBundleMessageSource();
 	source.setBasename("appdirectlabels");
 	return source;
+    }
+    
+    @Bean
+    public DBServiceContainer dBServiceContainer(){
+	DBServiceContainer container = new DBServiceContainer();
+	container.addService(CommonConstants.MYSQL, applicationContext.getBean(MySQLDBServiceImpl.class));
+	container.addService(CommonConstants.HASHMAP,applicationContext.getBean(HashMapDBServiceImpl.class));
+	return container;
     }
     
 }

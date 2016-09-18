@@ -41,6 +41,7 @@ public class SecurityFilter implements Filter{
 	URI_LIST.add("/swagger");
 	URI_LIST.add("/v2/api-docs");
 	URI_LIST.add("/subscribe");
+	URI_LIST.add("/resource");
     }
 
     @Override

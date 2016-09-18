@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http.csrf().disable();
 	http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-		.antMatchers("/swagger/**", "/v2/api-docs/**","/subscribe/**")
+		.antMatchers("/swagger/**", "/v2/api-docs/**","/subscribe/**","/resource/**")
 		.permitAll().anyRequest().fullyAuthenticated();
     }
 
