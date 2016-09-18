@@ -26,3 +26,6 @@ For cancel subscription:
 https://2fb6a249.ngrok.io/AppDirect/subscribe/cancel?url={eventUrl}
 
 
+All the resource CRUD operation apis are under the resource tab in the swagger index page.
+
+
