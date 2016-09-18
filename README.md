@@ -28,4 +28,33 @@ https://2fb6a249.ngrok.io/AppDirect/subscribe/cancel?url={eventUrl}
 
 All the resource CRUD operation apis are under the resource tab in the swagger index page.
 
+ADD operation: https://2fb6a249.ngrok.io/AppDirect/resource/add POST Request and the request json format is like below:
+{
+  "content": [
+    {
+      "id": "string",
+      "value": "string"
+    }
+  ]
+}
+
+(list of id value objects)
+
+UPDATE Operation: https://2fb6a249.ngrok.io/AppDirect/resource/update POST request and the request json format:
+{
+  "content": [
+    {
+      "id": "string",
+      "value": "string"
+    }
+  ]
+}
+
+DELETE operation: http://2fb6a249.ngrok.io/AppDirect/resource/{ids} DELETE request. Replace ids with comma separated URLencoded ids.
+GET operation: http://2fb6a249.ngrok.io/AppDirect/resource/{ids} GET request. Replace ids with comma separted URLencoded ids.
+
+
+
+
+
 
