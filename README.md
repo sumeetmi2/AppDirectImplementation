@@ -54,7 +54,7 @@ DELETE operation: http://2fb6a249.ngrok.io/AppDirect/resource/{ids} DELETE reque
 GET operation: http://2fb6a249.ngrok.io/AppDirect/resource/{ids} GET request. Replace ids with comma separted URLencoded ids.
 
 
-
+Currently the GET on the resource is done on one of the database that is hashmapdb.(Configurable from the application.properties file). The DELETE UPDATE and ADD operation are performed on all the databases available.
 
 
 
