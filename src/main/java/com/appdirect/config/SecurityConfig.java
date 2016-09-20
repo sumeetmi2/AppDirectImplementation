@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 
@@ -32,8 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 	http.csrf().disable();
+	http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 	http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-		.antMatchers("/swagger/**", "/v2/api-docs/**","/subscribe/**","/resource/**")
+		.antMatchers("/swagger/**", "/v2/api-docs/**","/user/login","/user/logout")
 		.permitAll().anyRequest().fullyAuthenticated();
     }
 

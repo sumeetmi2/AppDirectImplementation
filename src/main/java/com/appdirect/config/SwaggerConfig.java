@@ -49,10 +49,22 @@ public class SwaggerConfig {
     /**
      * @return
      */
+    private Predicate<String> userApiPaths() {
+	return PathSelectors.regex("/user/.*");
+    }
+    
+    @Bean
+    public Docket userApis() {
+	return new Docket(DocumentationType.SWAGGER_2).groupName("user-apis").apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.any())
+		.paths(userApiPaths()).build();
+    }
+
+    /**
+     * @return
+     */
     private Predicate<String> resourceApiPaths() {
 	return PathSelectors.regex("/resource/.*");
     }
-
     
     private ApiInfo apiInfo() {
 	ApiInfo apiInfo = new ApiInfoBuilder().title("AppDirect").description("AppDirect APIs").contact("sumeetmi2@gmail.com")
