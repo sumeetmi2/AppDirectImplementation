@@ -26,6 +26,13 @@ For cancel subscription:
 https://2fb6a249.ngrok.io/AppDirect/subscribe/cancel?url={eventUrl}
 
 
+For change subscription:
+
+https://2fb6a249.ngrok.io/AppDirect/subscribe/change?url={eventUrl}
+
+All the event information is displayed in the console post the calls.
+
+
 All the resource CRUD operation apis are under the resource tab in the swagger index page.
 
 ADD operation: https://2fb6a249.ngrok.io/AppDirect/resource/add POST Request and the request json format is like below:
