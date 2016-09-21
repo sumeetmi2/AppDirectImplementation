@@ -57,4 +57,6 @@ GET operation: http://2fb6a249.ngrok.io/AppDirect/resource/{ids} GET request. Re
 Currently the GET on the resource is done on one of the database that is hashmapdb.(Configurable from the application.properties file). The DELETE UPDATE and ADD operation are performed on all the databases available.
 
 
+For using the subscription and resource apis you will need to login first using login apis. Username and password are admin/123123 (hardcoded for now)
+
 
