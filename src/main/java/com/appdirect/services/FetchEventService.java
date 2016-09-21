@@ -11,6 +11,6 @@ package com.appdirect.services;
  */
 public interface FetchEventService {
     
-    public EventResponse getEvent(String url) throws Exception;
+    public Object getEvent(String url) throws Exception;
     
 }

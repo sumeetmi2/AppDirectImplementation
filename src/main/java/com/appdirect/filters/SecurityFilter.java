@@ -40,6 +40,7 @@ public class SecurityFilter implements Filter{
     public void init(FilterConfig filterConfig) throws ServletException {
 	URI_LIST.add("/swagger");
 	URI_LIST.add("/v2/api-docs");
+	URI_LIST.add("/subscribe");
 	URI_LIST.add("/user/login");
 	URI_LIST.add("/user/logout");
     }

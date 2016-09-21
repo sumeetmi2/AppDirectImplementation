@@ -3,16 +3,20 @@
  */
 package com.appdirect.services;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
-import oauth.signpost.signature.QueryStringSigningStrategy;
 
 /**
  * @author SumeetS
@@ -22,19 +26,23 @@ import oauth.signpost.signature.QueryStringSigningStrategy;
 public class FetchEventServiceImpl implements FetchEventService {
     
     @Autowired
-    EventResponse eventResponse;
+    EventResponse stringEventResponse;
 
     /*
      * (non-Javadoc)
      * @see com.appdirect.services.FetchEventService#getEvent(java.lang.String)
      */
     @Override
-    public EventResponse getEvent(String urlString) throws OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException{
-	OAuthConsumer consumer = new DefaultOAuthConsumer("testapp-135859", "hUI0jzPmhMjT1q2r");
-	consumer.setSigningStrategy(new QueryStringSigningStrategy());
-	String signedUrl = consumer.sign(urlString);
-	RestTemplate restTemplate = new RestTemplate();
-	return (EventResponse) eventResponse.response((String)(restTemplate.getForEntity(signedUrl, String.class).getBody()));
+    public Object getEvent(String urlString) throws OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException, IOException{
+	OAuthConsumer consumer = new DefaultOAuthConsumer("testapp-135859", "VwcW4XHTyJ69");
+	URL url = new URL(urlString);
+	HttpURLConnection request = (HttpURLConnection) url.openConnection();
+	consumer.sign(request);
+	request.connect();
+	InputStream respone = request.getInputStream();
+	String response = IOUtils.toString(respone,"UTF-8");
+	respone.close();
+	return stringEventResponse.response(response);
     }
 
 }

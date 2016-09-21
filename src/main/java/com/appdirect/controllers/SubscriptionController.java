@@ -35,11 +35,11 @@ public class SubscriptionController extends BaseController{
 	ResponseWrapperObject response = new ResponseWrapperObject();
 	response.setSuccess("true");
 	response.setAccountIdentifier("sumeet");
-//	try {
-//	    System.out.println(fetchEventService.getEvent(eventUrl).toString());
-//	} catch (Exception e) {
-//	    e.printStackTrace();
-//	}
+	try {
+	    System.out.println(fetchEventService.getEvent(eventUrl).toString());
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
 	return sendSuccessResponse(response, HttpStatus.OK);
     }
     
@@ -49,6 +49,25 @@ public class SubscriptionController extends BaseController{
 	ResponseWrapperObject response = new ResponseWrapperObject();
 	response.setSuccess("true");
 	response.setAccountIdentifier("sumeet");
+	try {
+	    System.out.println(fetchEventService.getEvent(eventUrl).toString());
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	return sendSuccessResponse(response, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/change", method = RequestMethod.GET)
+    public ResponseEntity<?> change(@RequestParam(value="url",required=false) String eventUrl) {
+	System.out.println(eventUrl);
+	ResponseWrapperObject response = new ResponseWrapperObject();
+	response.setSuccess("true");
+	response.setAccountIdentifier("sumeet");
+	try {
+	    System.out.println(fetchEventService.getEvent(eventUrl).toString());
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
 	return sendSuccessResponse(response, HttpStatus.OK);
     }
 
